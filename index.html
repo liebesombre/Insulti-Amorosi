@@ -33,9 +33,25 @@
             border-radius: 10px;
             cursor: pointer;
             text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         button:hover {
             background-color: darkgray;
+        }
+        button:active {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+        button.playing {
+            background-color: red !important;
+            color: yellow !important;
+            animation: blink 0.5s infinite alternate;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -50,6 +66,7 @@
         <button onclick="playSound(6)">fantozzi</button>
         <button onclick="playSound(7)">una merda di cane</button>
         <button onclick="playSound(8)">succhia</button>
+        <button onclick="playRandom()" style="grid-column: span 3;">casuale</button>
     </div>
     
     <script>
@@ -72,11 +89,29 @@
         });
 
         function playSound(index) {
+            let button = document.querySelectorAll("button")[index];
+
+            // Resetta tutti i pulsanti
+            document.querySelectorAll("button").forEach(btn => btn.classList.remove("playing"));
+
+            // Se lo stesso audio è in riproduzione, interrompilo
             if (!audioElements[index].paused) {
                 audioElements[index].pause();
                 audioElements[index].currentTime = 0;
+                return;
             }
+
+            // Avvia la riproduzione e illumina il pulsante
             audioElements[index].play();
+            button.classList.add("playing");
+
+            // Quando l’audio finisce, rimuove l’effetto
+            audioElements[index].onended = () => button.classList.remove("playing");
+        }
+
+        function playRandom() {
+            let randomIndex = Math.floor(Math.random() * sounds.length);
+            playSound(randomIndex);
         }
     </script>
 </body>
