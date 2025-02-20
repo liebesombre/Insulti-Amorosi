@@ -28,14 +28,14 @@
             height: 100px;
             font-size: 16px;
             border: none;
-            background-color: black; /* Nero per il bottone */
-            color: white; /* Testo bianco */
+            background-color: black;
+            color: white;
             border-radius: 10px;
             cursor: pointer;
             text-align: center;
         }
         button:hover {
-            background-color: darkgray; /* Colore grigio scuro al passaggio */
+            background-color: darkgray;
         }
     </style>
 </head>
@@ -65,17 +65,19 @@
             "https://raw.githubusercontent.com/liebesombre/Insulti-Amorosi/main/audio/succhiamelotro.mp3"
         ];
         
-        let audio = new Audio();
-        
+        let audioElements = sounds.map(src => {
+            let audio = new Audio(src);
+            audio.preload = "auto"; // Precarica i file audio per ridurre il ritardo
+            return audio;
+        });
+
         function playSound(index) {
-            if (!audio.paused) {
-                audio.pause();
-                audio.currentTime = 0;
+            if (!audioElements[index].paused) {
+                audioElements[index].pause();
+                audioElements[index].currentTime = 0;
             }
-            audio.src = sounds[index];
-            audio.play();
+            audioElements[index].play();
         }
     </script>
 </body>
 </html>
-
