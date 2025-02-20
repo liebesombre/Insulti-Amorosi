@@ -33,71 +33,6 @@
         background-color: darkred; /* ROSSO SCURO AL PASSAGGIO */
     }
 </style>
-
-</head>
-<body>
-    <div class="grid">
-        <button onclick="playSound(0)">cavarmi</button>
-        <button onclick="playSound(1)">la rana</button>
-        <button onclick="playSound(2)">vergogna</button>
-        <button onclick="playSound(3)">fottiti</button>
-        <button onclick="playSound(4)">disturbo</button>
-        <button onclick="playSound(5)">a cazzara</button>
-        <button onclick="playSound(6)">fantozzi</button>
-        <button onclick="playSound(7)">merda di cane</button>
-        <button onclick="playSound(8)">succhia</button>
-    </div>
-    
-    <script>
-        let sounds = [
-            "https://raw.githubusercontent.com/username/repository/branch/audio/preferirei.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/rana.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/vergogna.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/fottiti.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/disturbo.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/acazzara.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/figlia_fantozzi.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/merda_cane.mp3",
-            "https://raw.githubusercontent.com/username/repository/branch/audio/succhiamelo.mp3"
-        ];
-        
-        let audio = new Audio();
-        <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soundboard</title>
-   <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 100px);
-        gap: 10px;
-    }
-    button {
-        width: 100px;
-        height: 100px;
-        font-size: 16px;
-        border: none;
-        background-color: red; /* ROSSO */
-        color: white;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: darkred; /* ROSSO SCURO AL PASSAGGIO */
-    }
-</style>
-
 </head>
 <body>
     <div class="grid">
@@ -127,18 +62,6 @@
         
         let audio = new Audio();
         
-        function playSound(index) {
-            if (!audio.paused) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-            audio.src = sounds[index];
-            audio.play();
-        }
-    </script>
-</body>
-</html>
-
         function playSound(index) {
             if (!audio.paused) {
                 audio.pause();
