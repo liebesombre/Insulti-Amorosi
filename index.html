@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundboard</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+        }
+        button {
+            width: 100px;
+            height: 100px;
+            font-size: 16px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <button onclick="playSound(0)">preferirei</button>
+        <button onclick="playSound(1)">la rana</button>
+        <button onclick="playSound(2)">sei la vergogna</button>
+        <button onclick="playSound(3)">fottiti</button>
+        <button onclick="playSound(4)">hai qualche disturbo</button>
+        <button onclick="playSound(5)">acazzara</button>
+        <button onclick="playSound(6)">la figlia di fantozzi</button>
+        <button onclick="playSound(7)">una merda di cane</button>
+        <button onclick="playSound(8)">succhiamelo</button>
+    </div>
+    
+    <script>
+    let sounds = [
+    "file:///F:/Insulti%20Amorosi/audio/gliocchi.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/rana.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/vergogna.wav",
+    "file:///F:/Insulti%20Amorosi/audio/fottitiscema.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/disturbo.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/cazzara.wav",
+    "file:///F:/Insulti%20Amorosi/audio/fantozzi.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/merdadicane.wav", 
+    "file:///F:/Insulti%20Amorosi/audio/succhiamelotro.wav"
+];
+
+        
+        let audio = new Audio();
+        
+        function playSound(index) {
+            if (!audio.paused) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            audio.src = sounds[index];
+            audio.play();
+        }
+    </script>
+</body>
+</html>
