@@ -15,15 +15,18 @@
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
+            padding: 10px;
+            box-sizing: border-box;
         }
         .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 90%;
-    max-width: 600px; /* Ridotto per migliorare il centramento su dispositivi mobili */
-    justify-items: center; /* Centra i bottoni nella griglia */
-}
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            justify-items: center;
+        }
         button {
             width: 100%;
             height: 100px;
@@ -44,15 +47,6 @@
         button:active {
             transform: scale(0.95);
             opacity: 0.8;
-        }
-        button.playing {
-            background-color: red !important;
-            color: yellow !important;
-            animation: blink 0.5s infinite alternate;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -91,21 +85,16 @@
 
         function playSound(index) {
             let button = document.querySelectorAll("button")[index];
-
+            
             // Resetta tutti i pulsanti
             document.querySelectorAll("button").forEach(btn => btn.classList.remove("playing"));
 
-            // Se lo stesso audio è in riproduzione, interrompilo
-            if (!audioElements[index].paused) {
-                audioElements[index].pause();
-                audioElements[index].currentTime = 0;
-                return;
-            }
-
-            // Avvia la riproduzione e illumina il pulsante
+            // Se lo stesso audio è in riproduzione, riavvialo
+            audioElements[index].currentTime = 0;
             audioElements[index].play();
+            
             button.classList.add("playing");
-
+            
             // Quando l’audio finisce, rimuove l’effetto
             audioElements[index].onended = () => button.classList.remove("playing");
         }
