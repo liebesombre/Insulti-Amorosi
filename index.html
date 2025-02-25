@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundboard</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-image: url('https://raw.githubusercontent.com/liebesombre/Insulti-Amorosi/main/audio/alebg.jpeg'); /* URL corretto */
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .grid {
+       body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://raw.githubusercontent.com/liebesombre/Insulti-Amorosi/main/audio/alebg.jpeg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     width: 90%;
     max-width: 600px;
-    justify-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-items: center; /* Centra i pulsanti nella griglia */
+    align-items: center; /* Allinea i pulsanti al centro verticalmente */
+    margin: auto; /* Centra la griglia */
 }
         button {
             width: 100%;
